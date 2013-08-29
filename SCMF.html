@@ -292,19 +292,20 @@ img {
 /* MY STYLES
 =============================================================================*/
 
-.version_template_example {
+.version_template {
   background-color: #ccc
 }
 
 .version_template_element {
   background-color: #CD5C5C;
 }
-span.version_template_element {
-  padding: 0 2px;
+
+.version {
+  background-color: #5F9EA0
 }
 
-.version_template {
-  background-color: #5F9EA0
+span.version_template_element, span.version_template, span.version {
+  padding: 0 2px;
 }
 
 .ebnf {
@@ -314,66 +315,128 @@ span.version_template_element {
 .sdlc_phase {
   text-decoration: underline
 }
+
+.diagram {
+  text-align:center
+}
 </style>
 </head>
 <body>
 <p align="center">
-<h1>SCMF specification</h1>
+<h1 style="text-align: center"><img src="http://localhost/scmf/images/SCMF_logo.png" align="top" style="margin: 0px 10px; top: -5px; position: relative"/>SCMF specification</h1>
 </p>
-<h1>1. Glossary</h1>
 <h2>Conventions</h2>
 <ul>
 <li>
 <p>EBNF (Extended Backus-Naur Form) convention syntax description (plaintext representation) is marked throughout the text of this document with green color: </p>
 <pre class="ebnf"><code>VersionCompound ::= "x" | VersionNumber</code></pre>
 </li>
-<li>EBNF (Extended Backus-Naur Form) convention syntax description (visual representation) is represented in following form:</li>
+<li>EBNF (Extended Backus-Naur Form) convention syntax description (visual representation) is represented in following form:
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_01.png" /></li>
+<li>
+<p><strong><a href="#version">Version</a> examples</strong> are marked throughout the text of this document with blue color: 
+<span class="version">1.x.x</span>, 
+<span class="version">2.x.0.21</span>,
+<span class="version">2.4.x.10</span>,
+<span class="version">2.0.3.8</span>, ...</p>
+</li>
+<li>
+<p><strong><a href="#version_template">Version template</a> element</strong> examples are marked throughout the text of this document with pink color: 
+<span class="version_template_element">x</span>,
+<span class="version_template_element">?</span>,
+<span class="version_template_element">N</span>,
+<span class="version_template_element">M</span>,
+<span class="version_template_element">K</span>,
+<span class="version_template_element">L</span>, ...</p>
+</li>
+<li>
+<p><strong><a href="#version_template">Version template</a> examples</strong> are marked throughout the text of this document with grey color: 
+<span class="version_template">N.?.?.L</span>, <span class="version_template">2.x.?.L</span>, <span class="version_template">3.0.K</span>, ...</p>
+</li>
 </ul>
-<p><p align="center">
-<img src="http://localhost/scmf/images/SCMF_01.png" /></p>
-<ul>
-<li>
-<p><em><a href="#version_template">Version template</a> examples</em> are marked throughout the text of this document with grey color: </p>
-<pre class="version_template_example"><code>N.?.?.L</code></pre>
-</li>
-<li>
-<p><em><a href="#version_template">Version template</a> element</em> examples are marked throughout the text of this document with pink color: </p>
-<pre class="version_template_element"><code>?</code></pre>
-</li>
-<li>
-<p><a id="version_template"><strong>Version templates</strong></a> are marked throughout the text of this document with blue color: </p>
-<pre class="version_template"><code>1.x.x</code></pre>
-</li>
-</ul>
+<p>Combination of <em>version examples</em> and <em>version template elements</em> usually forms <em>version template example</em>. For example, <a href="#version">versions</a> <span class="version">2.x.0.21</span>, <span class="version">2.4.x.10</span> and <span class="version">2.0.3.8</span> can be referenced by following <em>version template examples</em>: <span class="version_template">N.?.?.L</span> and <span class="version_template">2.?.?.L</span>.</p>
 <h2>Definitions</h2>
 <ul>
-<li><a id="scmf"><strong>SCMF</strong></a> (Software Configuration Management Framework) – list of conventions and best practices used for the effective Software Configuration Management activities (version control, deployment management, build management, continuous integration, dependency management, branches management, merge management, release management) organization and its effective maintenance/support. </li>
 <li>
-<a id="version"><strong>Version</strong></a> – special type of marker used for the purpose of distinguishing between different kinds of artifacts which have been produced/created at one of the <em>SDLC stages</em>. Usually consists of leading version number, trailing version number and one (or two, in the case of integration artifact version) version compounds separated by the period:
-<pre class="ebnf"><code>Version ::= VersionNumber "." VersionCompound "."VersionCompound ("."VersionNumber )?</code></pre>
+<p><a id="scmf"><strong>SCMF</strong></a> (Software Configuration Management Framework) – list of conventions and best practices used for the effective Software Configuration Management activities (version control, deployment management, build management, continuous integration, dependency management, branches management, merge management, release management) organization and its effective maintenance/support. </p>
 </li>
-</ul>
+<li>
+<p><a id="version"><strong>Version</strong></a> – special type of marker used for the purpose of distinguishing between different kinds of artifacts which have been produced/created at one of the <em>SDLC stages</em>. Usually consists of leading version number, trailing version number and one (or two, in the case of integration artifact version) version compounds separated by the period:</p>
+<pre class="ebnf"><code>Version ::= VersionNumber "." VersionCompound "."VersionCompound ("."VersionNumber )?</code></pre>
 <p><p align="center">
 <img src="http://localhost/scmf/images/SCMF_02.png" /></p>
 <ul>
 <li>
-<p><a id="version_compound"><strong>Version compound</strong></a> – part of <a href="#version">version</a>, separated from other version compounds with the period (“<span class="version_template_element">.</span>” symbol). Version compound value is either <a href="#version_number_placeholder">version number placeholder</a> or <a href="#version_number">version number</a>:</p>
+<p><a id="version_compound"><strong>Version compound</strong></a> – part of <a href="#version">version</a>, separated from other version compounds with the period (“<span class="version_template_element">.</span>” symbol). <em>Version compound</em> value is either <a href="#version_number_placeholder">version number placeholder</a> or <a href="#version_number">version number</a>:</p>
 <pre class="ebnf"><code>VersionCompound::= "x" | VersionNumber</code></pre>
-<p>Version compound is usually represented by question mark (“<span class="version_template_element">?</span>” symbol) as a part of a <a href="#version_template">version template</a>. Example: <span class="version_template_example">N.?.?.L</span>.</p>
-</li>
-<li><a id="version_number_placeholder"><strong>Version number placeholder</strong></a>– &quot;<span class="version_template_element">x</span>&quot; symbol used as a placeholder for <a href="#version_number">version number</a> value. It is used instead of actual <a href="#version_number">version number</a> in the case when numbering is not applicable to the current context. For example, <a href="#support_branch_version">support branch version</a> can have value <span class="version_template">1.x.x</span>. &quot;<span class="version_template_element">x</span>&quot; symbols show that <a href="#release_version_number">release version number</a> and <a href="#build_version_number">build version number</a> are not applicable to the context of <a href="#support_branch">support branch</a> versioning (because there are no corresponding versioned <a href="#release_artifact">release artifact</a> and <a href="#build_artifact">build artifact</a>). Thus, initial <a href="#mainline">mainline</a> state can be marked with <span class="version_template">x.x.x</span> version as long as numbering is not applicable to the initial <a href="#mainline">mainline</a> context at all (there are no <a href="#versioned_artifact">versioned artifacts</a> which correspond to the <a href="#major_version_number">major version number</a>, <a href="#release_version_number">release version number</a> and <a href="#build_version_number">build version number</a>).</li>
-<li><a id="version_number"><strong>Version number</strong></a> – integer used for incremental version numbering; it is a numeric representation of corresponding <a href="#sdlc_iteration">SDLC iteration</a>; also it represents successive instance of some <a href="#versioned_artifact">versioned artifact</a>. It usually starts from 0 (even in case of <a href="#major_version_number">major version number</a>, see paragraph 3). Version number is usually represented as a part of a version template using one of the following symbols: ‘<span class="version_template_element">N</span>’, ‘<span class="version_template_element">M</span>’, ‘<span class="version_template_element">K</span>’, ‘<span class="version_template_element">L</span>’. Usage of specific letter depends on the context. Example: <span class="version_template_example">N.M.K.L</span>.</li>
+<p>Version compound is usually represented by question mark (“<span class="version_template_element">?</span>” symbol) as a part of a <a href="#version_template">version template</a>. Example: <span class="version_template">N.?.?.L</span>.</p>
+<ul>
+<li><a id="version_number_placeholder"><strong>Version number placeholder</strong></a>– &quot;<span class="version_template_element">x</span>&quot; symbol used as a placeholder for <a href="#version_number">version number</a> value. It is used instead of actual <a href="#version_number">version number</a> in the case when numbering is not applicable to the current context. For example, <a href="#support_branch_version">support branch version</a> can have value <span class="version">1.x.x</span>. &quot;<span class="version_template_element">x</span>&quot; symbols show that <a href="#release_version_number">release version number</a> and <a href="#build_version_number">build version number</a> are not applicable to the context of <a href="#support_branch">support branch</a> versioning (because there are no corresponding versioned <a href="#release_artifact">release artifact</a> and <a href="#build_artifact">build artifact</a>). Thus, initial <a href="#mainline">mainline</a> state can be marked with <span class="version">x.x.x</span> version as long as numbering is not applicable to the initial <a href="#mainline">mainline</a> context at all (there are no <a href="#versioned_artifact">versioned artifacts</a> which correspond to the <a href="#major_version_number">major version number</a>, <a href="#release_version_number">release version number</a> and <a href="#build_version_number">build version number</a>).</li>
 <li>
-<p><a id="major_version_number"><strong>Major version number</strong></a> – integer used for incremental version numbering of <a href="#support_branch">support branches</a>. <em>Major version</em> corresponds to the most long-lasting <a href="#sdlc_iteration">SDLC iteration</a> (<a href="#major_version_development">major version development</a>) – starting from the <span class="sdlc_phase">requirements analysis and management</span> phase, ending with the <span class="sdlc_phase">maintenance &amp; support phase</span>. Major version number is usually represented as a part of a <a href="#version_template">version template</a> using symbol ‘<span class="version_template_element">N</span>’: 
+<p><a id="version_number"><strong>Version number</strong></a> – integer used for incremental version numbering; it is a numeric representation of corresponding <a href="#sdlc_iteration">SDLC iteration</a>; also it represents successive instance of some <a href="#versioned_artifact">versioned artifact</a>. It usually starts from 0 (even in case of <a href="#major_version_number">major version number</a>). Version number is usually represented as a part of a <a href="#version_template">version template</a> using one of the following symbols: ‘<span class="version_template_element">N</span>’, ‘<span class="version_template_element">M</span>’, ‘<span class="version_template_element">K</span>’, ‘<span class="version_template_element">L</span>’. Usage of specific letter depends on the context. Example: <span class="version_template">N.M.K.L</span>.</p>
+<ul>
+<li><a id="major_version_number"><strong>Major version number</strong></a> – integer used for incremental version numbering of <a href="#support_branch">support branches</a>. <em>Major version</em> corresponds to the most long-lasting <a href="#sdlc_iteration">SDLC iteration</a> (<a href="#major_version_development">major version development</a>) – starting from the <span class="sdlc_phase">requirements development and management</span> phase, ending with the <span class="sdlc_phase">maintenance &amp; support phase</span>. Major version number is usually represented as a part of a <a href="#version_template">version template</a> using symbol ‘<span class="version_template_element">N</span>’: 
 <p align="center">
-<img src="http://localhost/scmf/images/SCMF_03.png" /></p>
-</li>
+<img src="http://localhost/scmf/images/SCMF_03.png" /></li>
 <li>
-<p><a id="release_version_number"><strong>Release version number</strong></a> – integer used for incremental version numbering of <a href="#release_branch">release branches</a> using <a href="#major_inheritance_scope">major inheritance scope</a>. Release version corresponds to <a href="#sdlc_iteration">SDLC iteration</a> (<a href="#release_version_development">release version development</a>) starting from the <span class="sdlc_phase">requirements analysis and management</span> phase, ending with the <span class="sdlc_phase">maintenance &amp; support</span> phase, omitting <span class="sdlc_phase">design</span> phase (sometimes it might be reduced to “<span class="sdlc_phase">implementation</span> → <span class="sdlc_phase">deployment</span>” <a href="#sdlc_iteration">SDLC iteration</a>). Release version number is usually represented as a part of a <a href="#version_template">version template</a> using symbol ‘<span class="version_template_element">M</span>’:
+<p><a id="release_version_number"><strong>Release version number</strong></a> – integer used for incremental version numbering of <a href="#release_branch">release branches</a> using <a href="#major_inheritance_scope">major inheritance scope</a>. Release version corresponds to <a href="#sdlc_iteration">SDLC iteration</a> (<a href="#release_version_development">release version development</a>) starting from the <span class="sdlc_phase">requirements development and management</span> phase, ending with the <span class="sdlc_phase">maintenance &amp; support</span> phase, omitting <span class="sdlc_phase">design</span> phase (sometimes it might be reduced to “<span class="sdlc_phase">implementation</span> → <span class="sdlc_phase">deployment</span>” <a href="#sdlc_iteration">SDLC iteration</a>). Release version number is usually represented as a part of a <a href="#version_template">version template</a> using symbol ‘<span class="version_template_element">M</span>’:
 <p align="center">
 <img src="http://localhost/scmf/images/SCMF_04.png" />
 <p align="center">
 <img src="http://localhost/scmf/images/SCMF_05.png" /></p>
+</li>
+<li>
+<p><a id="build_version_number"><strong>Build version number</strong></a> – integer used for incremental version numbering of <a href="#build_artifact">build artifacts</a> (using <a href="#precursory_inheritance_scope">precursory inheritance scope</a>) or <a href="#release_artifact">release artifacts</a> (using <a href="#release_inheritance_scope">release inheritance scope</a>). <em>Build version</em> corresponds to <a href="#sdlc_iteration">SDLC iteration</a> starting from the <span class="sdlc_phase">implementation</span> phase, ending with <span class="sdlc_phase">testing</span> phase. <em>Build version number</em> is usually represented as a part of a <a href="#version_template">version template</a> using symbol ‘<span class="version_template_element">K</span>’:
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_06.png" /></p>
+</li>
+<li>
+<p><a id="integration_version_number"><strong>Integration version number</strong></a> – integer used for incremental version numbering of <a href="#integration_artifact">integration artifacts</a> using <a href="#integration_scope">integration scope</a>. <em>Integration version</em> corresponds to <a href="#sdlc_iteration">SDLC iteration</a> starting from the <span class="sdlc_phase">implementation</span> phase, ending with <span class="sdlc_phase">integration</span> phase. <em>Integration version number</em> is usually represented as a part of a <a href="#version_template">version template</a> using symbol ‘<span class="version_template_element">L</span>’:
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_07.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a id="artifact_version"><strong>Artifact version</strong></a> – <a href="#version">Version</a> of <a href="#artifact">artifact</a> (result of the build process) produced as a result of one of <a href="#sdlc_stage">SDLC stages</a>. Has one of the following <a href="#version_template">version templates</a>: <span class="version_template">N.?.K</span> or <span class="version_template">N.?.?.L</span>. </p>
+<ul>
+<li>
+<a id="build_release_artifact_version"><strong>Build/release artifact version</strong></a> – <a href="#artifact">artifact</a> having following <a href="#version_template">version template</a>: <span class="version_template">N.?.K</span>.
+<ul>
+<li><a id="build_artifact_version"><strong>Build artifact version</strong></a> – version of <a href="#build_artifact">build artifact</a> corresponding to the following <a href="#version_template">version template</a>: <span class="version_template">N.x.K</span></li>
+<li><a id="build_artifact_version"><strong>Release artifact version</strong></a> – version of <a href="#release_artifact">release artifact</a> corresponding to the following <a href="#version_template">version template</a>: <span class="version_template">N.M.K</span>
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_08.png" /></li>
+</ul>
+</li>
+<li>
+<a id="integration_artifact_version"><strong>Integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.?.?.L</span>.
+<ul>
+<li><a id="pilot_integration_artifact_version"><strong>Pilot integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.x.x.L</span>.</li>
+<li><a id="development_integration_artifact_version"><strong>Development integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.x.K.L</span>.</li>
+<li><a id="pre-release_integration_artifact_version"><strong>Pre-release integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.M.x.L</span>.</li>
+<li><a id="release_integration_artifact_version"><strong>Release integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.M.K.L</span>.re
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_09.png" /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a id="branch_version"><strong>Branch version</strong></a> – version of repository branch. Could be of two main types: <a href="#support_branch_version">support branch version</a> and <a href="#release_branch_version">release branch version</a>. Has following <a href="#version_template">version template</a>: <span class="version_template">N.?.x</span>.
+<ul>
+<li><a id="support_branch_version"><strong>Support branch version</strong></a> – branch (<a href="#support_branch">support branch</a>) having following <a href="#version_template">version template</a>: <span class="version_template">N.x.x</span>. </li>
+<li><a id="release_branch_version"><strong>Release branch version</strong></a> – branch (<a href="#release_branch">release branch</a>) having following <a href="#version_template">version template</a>: <span class="version_template">N.M.x</span>. </li>
+</ul>
+</li>
+<li><a id="starting_version"><strong>Starting version</strong></a> – <a href="#version">version</a> used by default for the <a href="#mainline">mainline</a> <a href="#codebase">codebase</a> of newly started project/development (new version control repository has been allocated).</li>
+<li><a id="inherited_version"><strong>Inherited version</strong></a> – <a href="#version">version</a> part, which has been inherited from the parent entity. For example, <a href="#release_branch_version">release branch version</a> <span class="version">1.0.x</span> inherits its <a href="#major_version_number">major version number</a> from parent <a href="#support_branch">support branch</a> <span class="version">1.x.x</span> as long it cannot be created without this parent branch. Another example: <a href="#release_artifact">release artifact</a> <span class="version">2.3.6</span> inherits <a href="#major_version_number">major version number</a> (2) and <a href="#release_version_number">release version number</a> (3) from parent <a href="#release_branch">release branch</a> <span class="version">2.3.x</span>.</li>
+<li><a id="imaginary_version"><strong>Imaginary version</strong></a> – <a href="#version">version</a> assigned to the <a href="#mainline">mainline</a> <a href="#codebase">codebase</a> depending on the repository state or current <a href="#sdlc_phase">SDLC phase</a> (see Picture 13 (<strong>TODO</strong>: replace image link), <em>imaginary versions</em> are outlined by black dashed rectangles). <a href="#codebase_inheritance">Codebase inheritance</a> definition section contains corresponding details.</li>
+<li><a id="version_template"><strong>Version template</strong></a> – notation used for referencing version sets (several <a href="#version">versions</a> at once). For example, versions <span class="version">1.x.x</span>, <span class="version">3.x.x</span> and <span class="version">1.0.x</span> can be referenced at once using version template <span class="version_template">N.?.x</span>.</li>
+</ul>
 </li>
 </ul>
 
