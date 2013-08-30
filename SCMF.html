@@ -418,7 +418,7 @@ span.version_template_element, span.version_template, span.version {
 <li><a id="pilot_integration_artifact_version"><strong>Pilot integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.x.x.L</span>.</li>
 <li><a id="development_integration_artifact_version"><strong>Development integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.x.K.L</span>.</li>
 <li><a id="pre-release_integration_artifact_version"><strong>Pre-release integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.M.x.L</span>.</li>
-<li><a id="release_integration_artifact_version"><strong>Release integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.M.K.L</span>.re
+<li><a id="release_integration_artifact_version"><strong>Release integration artifact version</strong></a> – version of <a href="#integration_artifact">integration artifact</a> corresponding to following <a href="#version_template">version template</a>: <span class="version_template">N.M.K.L</span>.
 <p align="center">
 <img src="http://localhost/scmf/images/SCMF_09.png" /></li>
 </ul>
@@ -436,6 +436,29 @@ span.version_template_element, span.version_template, span.version {
 <li><a id="inherited_version"><strong>Inherited version</strong></a> – <a href="#version">version</a> part, which has been inherited from the parent entity. For example, <a href="#release_branch_version">release branch version</a> <span class="version">1.0.x</span> inherits its <a href="#major_version_number">major version number</a> from parent <a href="#support_branch">support branch</a> <span class="version">1.x.x</span> as long it cannot be created without this parent branch. Another example: <a href="#release_artifact">release artifact</a> <span class="version">2.3.6</span> inherits <a href="#major_version_number">major version number</a> (2) and <a href="#release_version_number">release version number</a> (3) from parent <a href="#release_branch">release branch</a> <span class="version">2.3.x</span>.</li>
 <li><a id="imaginary_version"><strong>Imaginary version</strong></a> – <a href="#version">version</a> assigned to the <a href="#mainline">mainline</a> <a href="#codebase">codebase</a> depending on the repository state or current <a href="#sdlc_phase">SDLC phase</a> (see Picture 13 (<strong>TODO</strong>: replace image link), <em>imaginary versions</em> are outlined by black dashed rectangles). <a href="#codebase_inheritance">Codebase inheritance</a> definition section contains corresponding details.</li>
 <li><a id="version_template"><strong>Version template</strong></a> – notation used for referencing version sets (several <a href="#version">versions</a> at once). For example, versions <span class="version">1.x.x</span>, <span class="version">3.x.x</span> and <span class="version">1.0.x</span> can be referenced at once using version template <span class="version_template">N.?.x</span>.</li>
+</ul>
+</li>
+<li>
+<a id="artifact"><strong>Artifact</strong></a> – result of build process which can be used for subsequent installation/deployment. There could be three main <a href="#artifact">artifact</a> types: <em>build artifact</em>, <em>release artifact</em> and <em>integration artifact</em>:
+<ul>
+<li><a id="build_artifact"><strong>Build artifact</strong></a> – <a href="#artifact">artifact</a> produced during <a href="#precursory_major_version_development">precursory major version development</a> stage.</li>
+<li><a id="release_artifact"><strong>Release artifact</strong></a> – <a href="#artifact">artifact</a> produced during <a href="#release_version_development">release version development</a> stage.</li>
+<li><a id="integration_artifact"><strong>Integration artifact</strong></a> – <a href="#artifact">artifact</a> produced during <a href="#integration">integration</a> stage.</li>
+</ul>
+</li>
+<li>
+<a id="versioned_artifact"><strong>Versioned artifact</strong></a> – entity stored in version control system (there are two types of such entities: <a href="#branch">branches</a> and <a href="#tag">tags</a>) which can be used as a starting point for build process and, therefore, for producing <a href="#artifact">artifact</a>. <em>Versioned artifact</em> has the same <a href="#version">version</a> as the corresponding <a href="#artifact">artifact</a> (<strong>TODO</strong>: refine definition) it represents.
+<ul>
+<li>
+<a id="branch"><strong>Branch</strong></a> – <a href="#versioned_artifact">versioned artifact</a> used for the purpose of versioning project source codebase.
+<ul>
+<li><a id="mainline"><strong>Mainline</strong></a> – main <a href="#branch">branch</a> used for versioning source codebase related to the latest <a href="#major_version_development">major version development</a> stage. Typical examples of <em>mainline</em> branch are <strong>trunk</strong> (for Subversion version control system) and <strong>master</strong> (for Git version control system).</li>
+<li><a id="support branch"><strong>Support branch</strong></a> – <a href="#branch">branch</a> used for versioning source codebase related to the <a href="#major_version_development">major version development</a> stage.</li>
+<li><a id="release_branch"><strong>Release branch</strong></a> – <a href="#branch">branch</a> used for versioning source codebase related to <a href="#release_version_development">release version development</a> stage.</li>
+<li><a id="experimental_branch"><strong>Experimental branch</strong></a> – <a href="#branch">branch</a> used for versioning any kind of codebase without regard to any of the <a href="#sdlc_stages">SDLC stages</a>.</li>
+</ul>
+</li>
+<li><a id="tag"><strong>Tag</strong></a> – <a href="#versioned_artifact">versioned artifact</a> used for the purpose of snapshotting source codebase used for producing <a href="#build_release_artifact">build/release artifact</a>.</li>
 </ul>
 </li>
 </ul>
