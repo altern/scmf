@@ -104,3 +104,37 @@ Combination of *version examples* and *version template elements* usually forms 
 	- <a id="integration_inheritance_scope">**Integration inheritance scope**</a> – [version inheritance scope](#version_inheritance_scope) of the stage lasting from the moment of previous [build/release artifact](#build_release_artifact) delivery to the next [build/release artifact](#build_release_artifact) (see picture below; *integration inheritance scopes* are marked with dashed red outlines):
 	<p align="center">
 	![](http://localhost/scmf/images/SCMF_13.png)
+- <a id="codebase">**Codebase**</a> – all source code corresponding to specific versioned state of a single [branch](#branch). In other words, *codebase* corresponds to all content that has been stored in a branch at some specific moment of time.
+- <a id="codebase_inheritance">**Codebase inheritance**</a> is a concept founded on the principle of versioning latest [major version development](#major_version_development) in [mainline](#mainline). Once next major version development has been initiated, versioning of previous [major version development](#major_version_development) should be transferred into separate [support branch](#support_branch) (see picture below):
+<p align="center">
+![](http://localhost/scmf/images/SCMF_14.png)
+- <a id="sdlc">**SDLC**</a> – software development lifecycle. Consists of several [SDLC phases](#sdlc_phase).
+	- <a id="sdlc_phase">**SDLC phase**</a> – set of software development activities grouped by one of following general standalone goals to achieve: <span class="sdlc_phase">project initiation</span>, <span class="sdlc_phase">requirements analysis and development</span>, <span class="sdlc_phase">design</span>, <span class="sdlc_phase">implementation (development)</span>, <span class="sdlc_phase">integration</span>, <span class="sdlc_phase">testing</span>, <span class="sdlc_phase">deployment (delivery)</span>, <span class="sdlc_phase">maintenance and support</span>, <span class="sdlc_phase">system utilization</span>.
+		- **<a id="deployment">Deployment</a> (delivery)** – [SDLC phase](#sdlc_phase) including publishing of [build artifacts](#buld_artifact) to the target environment and configuring it properly in order to run seamlessly on the target environment.
+	- <a id="sdlc_iteration">**SDLC iteration**</a> – set of subsequent [SDLC phases](#sdlc_phase) which can be represented as a cycle (can be repeatedly passed in an established order one or several times). There could be several [SDLC iterations](#sdlc_iteration) nested into each other (**TODO**: needs picture). 
+	- <a id="sdlc_stage">**SDLC stage**</a> – stage of software development process producing set of [artifacts](#artifact) referenced by specific [version template](#version_template) (has at least one <span class="version_template_element">?</span> symbol as a part of [version template](#version_template)). Main feature of [SDLC stage](#sdlc_stage) is that it has one whole consistent [version inheritance scope](#version_inheritance_scope).
+		- <a id="major_version_development">**Major version development**</a> – [SDLC stage](#sdlc_stage) which can be referenced by following [version template](#version_template): <span class="version_template">N.?.?</span>
+			- <a id="precursory_major_version_development">**Precursory major version development**</a> – [SDLC stage](#sdlc_stage) which can be referenced by following [version template](#version_template): <span class="version_template">N.x.?</span>
+			- <a id="release_version_development">**Release version development**</a> – [SDLC stage](#sdlc_stage) which can be referenced by following [version template](#version_template): <span class="version_template">N.M.?</span>
+			- <a id="integration">**Integration**</a> – [SDLC stage](#sdlc_stage) which can be referenced by following version template: <span class="version_template">N.?.?.L</span>
+- <a id="merge">**Merge**</a> – process of integrating two (or more) different [branch codebases](#branch_codebase) with the purpose of producing consistent resulting [codebase](#codebase) (representing properly functioning integrated functionality).
+- <a id="initial_repository_structure">**Initial repository structure**</a> – default repository directories hierarchy which should be used for the purpose of [versioned project](#versioned_project) initiation:
+
+	    /trunk
+	    /tags
+	    	/builds
+		    	/PA
+		    	/A
+		    	/B
+	    	/releases
+	    		/AR
+	    		/BR
+	    		/RC
+	    		/ST
+	    /branches
+	    	/experimental
+	    	/support
+	    	/release
+
+- <a id="versioned_project">**Versioned project**</a> – software/system/module/solution stored in a separate repository having independent versioning stream (independent revisions numbering). Every versioned project is started using [initial repository structure](#initial_repository_structure).
+

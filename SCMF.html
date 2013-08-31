@@ -478,6 +478,59 @@ span.version_template_element, span.version_template, span.version {
 <img src="http://localhost/scmf/images/SCMF_13.png" /></li>
 </ul>
 </li>
+<li><a id="codebase"><strong>Codebase</strong></a> – all source code corresponding to specific versioned state of a single <a href="#branch">branch</a>. In other words, <em>codebase</em> corresponds to all content that has been stored in a branch at some specific moment of time.</li>
+<li><a id="codebase_inheritance"><strong>Codebase inheritance</strong></a> is a concept founded on the principle of versioning latest <a href="#major_version_development">major version development</a> in <a href="#mainline">mainline</a>. Once next major version development has been initiated, versioning of previous <a href="#major_version_development">major version development</a> should be transferred into separate <a href="#support_branch">support branch</a> (see picture below):
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_14.png" /></li>
+<li>
+<a id="sdlc"><strong>SDLC</strong></a> – software development lifecycle. Consists of several <a href="#sdlc_phase">SDLC phases</a>.
+<ul>
+<li>
+<a id="sdlc_phase"><strong>SDLC phase</strong></a> – set of software development activities grouped by one of following general standalone goals to achieve: <span class="sdlc_phase">project initiation</span>, <span class="sdlc_phase">requirements analysis and development</span>, <span class="sdlc_phase">design</span>, <span class="sdlc_phase">implementation (development)</span>, <span class="sdlc_phase">integration</span>, <span class="sdlc_phase">testing</span>, <span class="sdlc_phase">deployment (delivery)</span>, <span class="sdlc_phase">maintenance and support</span>, <span class="sdlc_phase">system utilization</span>.
+<ul>
+<li><strong><a id="deployment">Deployment</a> (delivery)</strong> – <a href="#sdlc_phase">SDLC phase</a> including publishing of <a href="#buld_artifact">build artifacts</a> to the target environment and configuring it properly in order to run seamlessly on the target environment.</li>
+</ul>
+</li>
+<li><a id="sdlc_iteration"><strong>SDLC iteration</strong></a> – set of subsequent <a href="#sdlc_phase">SDLC phases</a> which can be represented as a cycle (can be repeatedly passed in an established order one or several times). There could be several <a href="#sdlc_iteration">SDLC iterations</a> nested into each other (<strong>TODO</strong>: needs picture). </li>
+<li>
+<a id="sdlc_stage"><strong>SDLC stage</strong></a> – stage of software development process producing set of <a href="#artifact">artifacts</a> referenced by specific <a href="#version_template">version template</a> (has at least one <span class="version_template_element">?</span> symbol as a part of <a href="#version_template">version template</a>). Main feature of <a href="#sdlc_stage">SDLC stage</a> is that it has one whole consistent <a href="#version_inheritance_scope">version inheritance scope</a>.
+<ul>
+<li>
+<a id="major_version_development"><strong>Major version development</strong></a> – <a href="#sdlc_stage">SDLC stage</a> which can be referenced by following <a href="#version_template">version template</a>: <span class="version_template">N.?.?</span>
+<ul>
+<li><a id="precursory_major_version_development"><strong>Precursory major version development</strong></a> – <a href="#sdlc_stage">SDLC stage</a> which can be referenced by following <a href="#version_template">version template</a>: <span class="version_template">N.x.?</span></li>
+<li><a id="release_version_development"><strong>Release version development</strong></a> – <a href="#sdlc_stage">SDLC stage</a> which can be referenced by following <a href="#version_template">version template</a>: <span class="version_template">N.M.?</span></li>
+<li><a id="integration"><strong>Integration</strong></a> – <a href="#sdlc_stage">SDLC stage</a> which can be referenced by following version template: <span class="version_template">N.?.?.L</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a id="merge"><strong>Merge</strong></a> – process of integrating two (or more) different <a href="#branch_codebase">branch codebases</a> with the purpose of producing consistent resulting <a href="#codebase">codebase</a> (representing properly functioning integrated functionality).</li>
+<li>
+<p><a id="initial_repository_structure"><strong>Initial repository structure</strong></a> – default repository directories hierarchy which should be used for the purpose of <a href="#versioned_project">versioned project</a> initiation:</p>
+<pre><code>/trunk
+/tags
+    /builds
+        /PA
+        /A
+        /B
+    /releases
+        /AR
+        /BR
+        /RC
+        /ST
+/branches
+    /experimental
+    /support
+    /release
+</code></pre>
+
+</li>
+<li>
+<p><a id="versioned_project"><strong>Versioned project</strong></a> – software/system/module/solution stored in a separate repository having independent versioning stream (independent revisions numbering). Every versioned project is started using <a href="#initial_repository_structure">initial repository structure</a>.</p>
+</li>
 </ul>
 
 </body>
