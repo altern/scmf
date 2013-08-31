@@ -461,6 +461,23 @@ span.version_template_element, span.version_template, span.version {
 <li><a id="tag"><strong>Tag</strong></a> – <a href="#versioned_artifact">versioned artifact</a> used for the purpose of snapshotting source codebase used for producing <a href="#build_release_artifact">build/release artifact</a>.</li>
 </ul>
 </li>
+<li>
+<a id="version_inheritance_scope"><strong>Version inheritance scope</strong></a> – specific stream interval (or conjunction of subsequent stream intervals) used as a parent entity for creating child entities and providing corresponding <a href="#inherited_version">inherited version</a> for child entities. <em>Version inheritance scope</em> is closely related to corresponding <a href="#sdlc_stage">SDLC stage</a>. 
+<ul>
+<li><a id="major_inheritance_scope"><strong>Major inheritance scope</strong></a> – <a href="#version_inheritance_scope">version inheritance scope</a> based on <a href="#codebase_inheritance">codebase inheritance</a> concept. It consists of stream intervals involved into <a href="#major_version_development">major version development</a> including <a href="#release_branch">release branches</a> (see picture below; <em>major inheritance scope</em> is marked with black dashed line):
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_10.png" /></li>
+<li><a id="precursory_inheritance_scope"><strong>Precursory inheritance scope</strong></a> – <a href="#version_inheritance_scope">version inheritance scope</a>, based on <a href="#codebase_inheritance">codebase inheritance</a> concept. It consists of stream intervals involved into <a href="#major_version_development">major version development</a> used for producing <a href="#build_artifact">build artifacts</a> (see picture below; <em>precursory inheritance scope</em> is marked with black dashed line):
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_11.png" /></li>
+<li><a id="release_inheritance_scope"><strong>Release inheritance scope</strong></a> – <a href="#version_inheritance_scope">version inheritance scope</a> consisting of stream interval involved into <a href="#release_version_development">release version development</a> used for producing <a href="#release_artifact">release artifacts</a>. Unlike <a href="#major_inheritance_scope">major inheritance scope</a> or <a href="#precursory_inheritance_scope">precursory inheritance scope</a>, stream interval for <em>release inheritance scope</em> corresponds to one whole <em>release branch</em> (<a href="#major_inheritance_scope">major</a> and <a href="#precursory_inheritance_scope">precursory inheritance scope</a> correspond to several subsequent stream intervals and different branches. See picture below; <em>major inheritance scope</em> is marked with black dashed line:
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_12.png" /></li>
+<li><a id="integration_inheritance_scope"><strong>Integration inheritance scope</strong></a> – <a href="#version_inheritance_scope">version inheritance scope</a> of the stage lasting from the moment of previous <a href="#build_release_artifact">build/release artifact</a> delivery to the next <a href="#build_release_artifact">build/release artifact</a> (see picture below; <em>integration inheritance scopes</em> are marked with dashed red outlines):
+<p align="center">
+<img src="http://localhost/scmf/images/SCMF_13.png" /></li>
+</ul>
+</li>
 </ul>
 
 </body>
