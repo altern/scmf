@@ -137,4 +137,17 @@ Combination of *version examples* and *version template elements* usually forms 
 	    	/release
 
 - <a id="versioned_project">**Versioned project**</a> – software/system/module/solution stored in a separate repository having independent versioning stream (independent revisions numbering). Every versioned project is started using [initial repository structure](#initial_repository_structure).
-
+- <a id="maturity_level">**Maturity level**</a> - level of software quality characterized by the [type of end user](#end_user_type) working with software [artifact](#artifact). 
+	- [Build artifact](#build_artifact) *maturity levels*:
+		- **<a id="pa"><a id="pre_alpha">PA</a></a> (pre-alpha)** – *maturity level* of [build artifact](#build_artifact) showing that developers use it for internal needs (smoke-testing, basic verification, etc)
+		- **<a id="a"><a id="alpha">A</a></a> (alpha)** – *maturity level* of [build artifact](#build_artifact) showing that it is used by software testing department in order to provide detailed build artifact verification report.
+		- **<a id="b"><a id="beta">B</a></a> (beta)** – *maturity level* of [build artifact](#build_artifact) showing that it can be used for delivery to target user (customer) in order to provide early acceptance testing or end-user verification.
+	- [Release artifact](#release_artifact) *maturity levels*:
+		- **<a id="ar"><a id="alpha_release">AR</a></a> (alpha-release)** – *maturity level* of [release artifact](#release_artifact) showing that it is used by software testing department in order to provide detailed [release artifact](#release_artifact) verification report.
+		- **<a id="br"><a id="beta_release">BR</a></a> (beta-release)** – *maturity level* of [release artifact](#release_artifact) showing that it is used for delivery to end-user/customer in order to provide acceptance testing or end-user [release artifact](#release_artifact) verification.
+		- **<a id="rc"><a id="release_candidate">RC</a></a> (release-candidate)** – *maturity level* of [release artifact](#release_artifact) showing that it needs some time (it should be fixed release-candidate interval; 1 month, for example) to function in production environment in order to detect critical/major bugs. If any critical/major bugs were found, release-candidate interval should start again.
+		- **<a id="st"><a id="stable">ST</a></a> (stable)** – *maturity level * of [release artifact](#release_artifact) showing that [release-candidate](#release_candidate) interval was successfully passed after last critical/major bug was found during [release-candidate](#release_candidate) phase.
+- <a id="end_user_type">**End user type**</a> - type of software user, defined by his/her natural expectations to software quality (number of bugs, number of software inconsistencies, satisfaction with performance/stability, etc):
+	- 	Software Developer 
+	- 	Software Tester
+	- 	Customer (target user) 
