@@ -548,7 +548,7 @@ span.version_template_element, span.version_template, span.version {
 <li><strong><a id="ar"><a id="alpha_release">AR</a></a> (alpha-release)</strong> – <em>maturity level</em> of <a href="#release_artifact">release artifact</a> showing that it is used by software testing department in order to provide detailed <a href="#release_artifact">release artifact</a> verification report.</li>
 <li><strong><a id="br"><a id="beta_release">BR</a></a> (beta-release)</strong> – <em>maturity level</em> of <a href="#release_artifact">release artifact</a> showing that it is used for delivery to end-user/customer in order to provide acceptance testing or end-user <a href="#release_artifact">release artifact</a> verification.</li>
 <li><strong><a id="rc"><a id="release_candidate">RC</a></a> (release-candidate)</strong> – <em>maturity level</em> of <a href="#release_artifact">release artifact</a> showing that it needs some time (it should be fixed release-candidate interval; 1 month, for example) to function in production environment in order to detect critical/major bugs. If any critical/major bugs were found, release-candidate interval should start again.</li>
-<li><strong><a id="st"><a id="stable">ST</a></a> (stable)</strong> – *maturity level * of <a href="#release_artifact">release artifact</a> showing that <a href="#release_candidate">release-candidate</a> interval was successfully passed after last critical/major bug was found during <a href="#release_candidate">release-candidate</a> phase.</li>
+<li><strong><a id="st"><a id="stable">ST</a></a> (stable)</strong> – <em>maturity level</em> of <a href="#release_artifact">release artifact</a> showing that <a href="#release_candidate">release-candidate</a> interval was successfully passed after last critical/major bug was found during <a href="#release_candidate">release-candidate</a> phase.</li>
 </ul>
 </li>
 </ul>
@@ -556,9 +556,11 @@ span.version_template_element, span.version_template, span.version {
 <li>
 <a id="end_user_type"><strong>End user type</strong></a> - type of software user, defined by his/her natural expectations to software quality (number of bugs, number of software inconsistencies, satisfaction with performance/stability, etc):
 <ul>
-<li>Software Developer </li>
-<li>Software Tester</li>
-<li>Customer (target user) </li>
+<li><a id="software_developer"><strong>Software Developer</strong></a> is a type of software user having minimal expectations towards working software. When <em>software developers</em> work on software application, it is acceptable for it to have some bugs and other problems that are expected to be fixed or changed in the future. Therefore, versions of application <em>software developers</em> currently build and use for smoke-testing are allowed to have mediocre quality as long as under any circumstances it cannot be considered complete or ready for usage.    
+</li>
+<li><a id="software_tester"><strong>Software Tester</strong></a> is a type of software user with a goal of discovering and reporting existing bugs/problems in software application. Basic quality requirement for versions of software used by <em>software testers</em> is the absence of critical bugs (inability to launch application, log into application and perform basic functions). </li>
+<li><a id="customer"><a id="target_user"><strong>Customer (target user)</strong></a></a> is a type of software user with high expectations about software quality. It is expected that <em>target users</em> can at least use application without difficulties and without losing their data.  
+</li>
 </ul>
 </li>
 </ul>
