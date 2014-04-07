@@ -9,7 +9,7 @@
 
 ## Description ##
 
-Purpose of this document is to establish vocabulary and basic unambiguous formal principles of Software Configuration Management Framework. Once established, common vocabulary and principles will allow to build useful tools for the purpose of software development automation and software project management. 
+Purpose of this document is to establish vocabulary and basic unambiguous formal principles of Software Configuration Management Framework. Once described and established, common vocabulary and principles will form firm foundation for building useful tools for the purpose of software development automation and software project management. 
 
 
 ##Quick list of SCMF definitions##
@@ -89,7 +89,7 @@ Combination of *version examples* and *version template elements* usually forms 
 	- <a id="branch_version">**Branch version**</a> - version of repository branch. Could be of two main types: [support branch version](#support_branch_version) and [release branch version](#release_branch_version). Has following [version template](#version_template): <span class="version_template">N.?.x</span>.
 		- <a id="support_branch_version">**Support branch version**</a> - branch ([support branch](#support_branch)) having following [version template](#version_template): <span class="version_template">N.x.x</span>. 
 		- <a id="release_branch_version">**Release branch version**</a> - branch ([release branch](#release_branch)) having following [version template](#version_template): <span class="version_template">N.M.x</span>. 
-	- <a id="starting_version">**Starting version**</a> - [version](#version) used by default for the [mainline](#mainline) [codebase](#codebase) of newly started project/development (new version control repository has been allocated).
+	- <a id="starting_version">**Starting version**</a> - [version](#version) used by default for the [mainline](#mainline) [codebase](#codebase) of newly started project/development (new version control repository has been allocated). Examples of *starting version*: <span class="version">0.x.x</span>, <span class="version">1.x.x</span>, <span class="version">2.x.x</span>, <span class="version">3.x.x</span>, etc (<span class="version_template">N.x.x</span>)
 	- <a id="inherited_version">**Inherited version**</a> - [version](#version) part, which has been inherited from the parent entity. For example, [release branch version](#release_branch_version) <span class="version">1.0.x</span> inherits its [major version number](#major_version_number) from parent [support branch](#support_branch) <span class="version">1.x.x</span> as long it cannot be created without this parent branch. Another example: [release artifact](#release_artifact) <span class="version">2.3.6</span> inherits [major version number](#major_version_number) (2) and [release version number](#release_version_number) (3) from parent [release branch](#release_branch) <span class="version">2.3.x</span>.
 	- <a id="imaginary_version">**Imaginary version**</a> - [version](#version) assigned to the [mainline](#mainline) [codebase](#codebase) depending on the repository state or current [SDLC phase](#sdlc_phase) (see Picture 13 (**TODO**: replace image link), *imaginary versions* are outlined by black dashed rectangles). [Codebase inheritance](#codebase_inheritance) definition section contains corresponding details.
 	- <a id="version_template">**Version template**</a> - notation used for referencing version sets (several [versions](#version) at once). For example, versions <span class="version">1.x.x</span>, <span class="version">3.x.x</span> and <span class="version">1.0.x</span> can be referenced at once using version template <span class="version_template">N.?.x</span>.
@@ -166,3 +166,34 @@ Combination of *version examples* and *version template elements* usually forms 
 	- 	<a id="software_developer">**Software Developer**</a> is a type of software user having minimal expectations towards working software. When *software developers* work on software application, it is acceptable for it to have some bugs and other problems that are expected to be fixed or changed in the future. Therefore, versions of application *software developers* currently build and use for smoke-testing are allowed to have mediocre quality as long as under any circumstances it cannot be considered complete or ready for usage.    
 	- 	<a id="software_tester">**Software Tester**</a> is a type of software user with a goal of discovering and reporting existing bugs/problems in software application. Basic quality requirement for versions of software used by *software testers* is the absence of critical bugs (inability to launch application, log into application and perform basic functions). 
 	- 	<a id="customer"><a id="target_user">**Customer (target user)**</a></a> is a type of software user with high expectations about software quality. It is expected that *target users* can at least use application without difficulties and without losing their data.  
+
+## Version incrementing rules ##
+### [Major version number](#major_version_number) incrementing rules ###
+When development is started in [mainline](#mainline), it is supposed that [major version number](#major_version_number) starts from 0 (unless another [major version number](#major_version_number) has been specified explicitly). [Version](#version) <span class="version">1.x.x</span> can be used instead of <span class="version">0.x.x</span> as a [starting version](#starting_version) in case when [target user](#target_user) is already actively using inherited software application created from the source code used for the current project. 
+	For example, if application used version numbering of format <span class="version">1.0</span>, <span class="version">1.1</span>, <span class="version">1.2</span>, ... before it was decided to apply principles of [SCMF](#scmf), question of proper choice of [major version number](#major_version_number) might arise. In that case choice of [major version number](#major_version_number) will depend on the question "Do target users actively use software application and rely on it in their work?". Positive answer means that [version](#version) <span class="version">1.x.x</span> should be assigned by default as a [starting version](#starting_version). Negative answer means that [version](#version) <span class="version">0.x.x</span> should be assigned by default as a [starting version](#starting_version). There is more complex case of assigning [major version number](#major_version_number) of higher order (<span class="version">2.x.x</span>, <span class="version">3.x.x</span>, ...) as a [starting version](#starting_version). Check section **Applying SCMF versioning principles for ongoing project** for the details on that matter.
+
+Major version number should be incremented if incompatible changes are introduced into the mainline.
+
+### [Release version number](#release_version_number) incrementing rules ###
+[Release version number](#release_version_number) should be incremented when at least one of the following conditions is met:
+
+1. When there is need of promoting [artifacts](#artifact) to target environment (for example, production environment, UAT environment or staging environment) for the purpose of making it available for the [target user](#target_user).
+
+1. If list of logically similar requirements has been implemented and it needs to be tested (for example, backlogs approach is used) and made available to the [target user](#target_user). 
+
+1. When release deadline is coming. In this case [release version number](#release_version_number) should be incremented in advance (at least ~2 weeks) in order to perform all planned release activities (alpha-testing, beta-testing, deployment, etc).
+
+### [Build version number](#build_version_number) incrementing rules ###
+[Build version number](#build_version_number) should be incremented when at least one of the following conditions is met:
+
+1.	When there is need of producing [artifact](#artifact) ready for any kind of testing (pre-alpha, alpha, beta, etc).
+1.	One or more requirements have been implemented and should be included into the next application deployment/delivery.
+1.	When there is need of deploying created [artifact](#artifact) to any of the target platforms.
+
+### [Integration version number](#integration_version_number) incrementing rules ###
+
+[Integration version number](#integration_version_number) is incremented automatically by continuous integration server using [integration inheritance scope](#integration_inheritance_scope).
+
+
+
+## Applying SCMF versioning principles for ongoing project ##
